@@ -26,7 +26,7 @@ def _normalized_text(value: str, field_name: str) -> str:
     return normalized
 
 
-# Frozen protects a debater's stable identity; slots restrict instances to declared fields.
+# Keep each brief immutable and limited to its declared fields.
 @dataclass(frozen=True, slots=True)
 class DebaterBrief:
     """Stable identity and strategic boundaries assigned to one debater.
@@ -51,8 +51,7 @@ class DebaterBrief:
             for commitment in self.core_commitments
         )
 
-        # Normalizing at the boundary keeps equivalent user input identical when
-        # context.py eventually renders these values into a model prompt.
+        # Normalize here so later prompt construction receives consistent values.
         object.__setattr__(
             self,
             "assigned_position",
