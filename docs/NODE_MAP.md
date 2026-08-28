@@ -2,8 +2,9 @@
 
 ```text
 Application
-└── Node 1: Debate Engine [PLANNED]
-    ├── Debate State [FIRST MILESTONE]
+└── Node 1: Debate Engine [IN PROGRESS]
+    ├── Debater Brief [IMPLEMENTED]
+    ├── Debate State [NEXT MILESTONE]
     ├── Round Orchestration
     ├── Debater Boundary
     ├── Research Boundary
@@ -21,5 +22,5 @@ Future
 └── Frontend
 ```
 
-Only the package boundary for Node 1 exists. Components shown beneath it are
-planned responsibilities, not implemented modules or finalized interfaces.
+Only components explicitly marked implemented have finalized code. Other
+components are planned responsibilities, not finalized interfaces.

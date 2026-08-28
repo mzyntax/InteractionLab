@@ -8,12 +8,14 @@ replaced independently where practical.
 
 ```text
 Application
-└── Node 1: Debate Engine [PLANNED]
+└── Node 1: Debate Engine [IN PROGRESS]
+    └── Debater Brief [IMPLEMENTED]
 ```
 
 Node 1 will coordinate deterministic debate rounds. Its internal components and
-public interfaces will be introduced incrementally after design review; no
-runtime behavior exists yet.
+public interfaces are introduced incrementally after design review. The first
+component is an immutable Debater Brief; orchestration behavior does not yet
+exist.
 
 The Python source uses a `src` layout. The `polar_debate.debate_engine` package
 is the architectural home of Node 1, while provider-specific integrations and a

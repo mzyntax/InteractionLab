@@ -1,6 +1,6 @@
 # Node 1: Debate Engine
 
-Status: planned
+Status: in progress
 
 ## Purpose
 
@@ -26,9 +26,13 @@ The architectural package is `polar_debate.debate_engine`. Modules will be
 added one milestone at a time rather than scaffolded before their interfaces
 are understood.
 
-The first proposed implementation milestone is Debate State: define the input
-configuration, invariants, initial state, and deterministic state transitions.
-Its mutability model and public interface require review before implementation.
+The first implemented component is the immutable Debater Brief. It establishes
+an assigned position, core commitments, allowed flexibility, and a debate
+objective without introducing the future Character or Skill systems.
+
+The next proposed component is Debate State: define the input configuration,
+invariants, initial state, and deterministic state transitions. Its mutability
+model and public interface require review before implementation.
 
 ## Boundaries
 
@@ -37,3 +41,5 @@ Its mutability model and public interface require review before implementation.
 - Basic claim tracking must not grow into the future argument graph prematurely.
 - The initial execution model is synchronous; concurrency requires review.
 - Persistence and CLI boundaries remain undecided.
+- Debater briefs are stable inputs; evolving transcripts and private judge
+  analysis must not be added to them.
