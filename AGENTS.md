@@ -7,6 +7,16 @@ node status live in `ARCHITECTURE.md` and `docs/NODE_MAP.md`.
 
 Do not attempt to build the entire application in one pass.
 
+Before implementing or changing architecture, read:
+
+- docs/PROJECT_VISION.md
+- docs/DESIGN_CONCERNS.md
+- relevant architectural decisions
+
+Known concerns are not automatically approved features. Code should preserve
+a graceful implementation path without prematurely implementing unresolved
+behavior.
+
 ## Collaboration
 
 For major architectural work:
