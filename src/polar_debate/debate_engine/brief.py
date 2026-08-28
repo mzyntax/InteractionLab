@@ -26,6 +26,7 @@ def _normalized_text(value: str, field_name: str) -> str:
     return normalized
 
 
+# Frozen protects a debater's stable identity; slots restrict instances to declared fields.
 @dataclass(frozen=True, slots=True)
 class DebaterBrief:
     """Stable identity and strategic boundaries assigned to one debater.
