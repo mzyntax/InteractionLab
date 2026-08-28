@@ -4,8 +4,9 @@ Polar Debate is a modular AI experimentation platform centered on structured,
 multi-round debates. The backend is being developed as independently testable
 nodes, beginning with the Debate Engine.
 
-The project is currently in its bootstrap phase. Node 1 behavior has not yet
-been implemented.
+Node 1 is under incremental development. Stable debater briefs and the
+structural debate state are implemented; model integration and round
+orchestration do not yet exist.
 
 ## Development
 

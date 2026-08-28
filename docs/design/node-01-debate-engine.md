@@ -30,9 +30,20 @@ The first implemented component is the immutable Debater Brief. It establishes
 an assigned position, core commitments, allowed flexibility, and a debate
 objective without introducing the future Character or Skill systems.
 
-The next proposed component is Debate State: define the input configuration,
-invariants, initial state, and deterministic state transitions. Its mutability
-model and public interface require review before implementation.
+Debate State is also implemented. It owns immutable debate configuration,
+completed atomic statements, the active round, and lifecycle status. Its
+transitions record statements, advance rounds, and complete a debate without
+mutating previous snapshots.
+
+Debate State accepts consecutive statements from either side because it records
+what has been accepted rather than deciding what may happen next. The future
+Round Orchestrator will own speaker order, statement allowances, yields, and
+interrupt legality. A stored statement is complete; model end signaling belongs
+to the future Debater boundary.
+
+The next proposed component is Round Orchestration. Its normal turn protocol and
+initial relationship to the deferred interrupt behavior require review before
+implementation.
 
 ## Boundaries
 

@@ -8,5 +8,19 @@ reviewed.
 """
 
 from polar_debate.debate_engine.brief import DebaterBrief
+from polar_debate.debate_engine.state import (
+    DebateConfig,
+    DebaterSide,
+    DebateState,
+    DebateStatement,
+    DebateStatus,
+)
 
-__all__ = ["DebaterBrief"]
+__all__ = [
+    "DebateConfig",
+    "DebateState",
+    "DebateStatement",
+    "DebateStatus",
+    "DebaterBrief",
+    "DebaterSide",
+]

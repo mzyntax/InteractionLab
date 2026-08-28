@@ -9,13 +9,15 @@ replaced independently where practical.
 ```text
 Application
 └── Node 1: Debate Engine [IN PROGRESS]
-    └── Debater Brief [IMPLEMENTED]
+    ├── Debater Brief [IMPLEMENTED]
+    └── Debate State [IMPLEMENTED]
 ```
 
 Node 1 will coordinate deterministic debate rounds. Its internal components and
-public interfaces are introduced incrementally after design review. The first
-component is an immutable Debater Brief; orchestration behavior does not yet
-exist.
+public interfaces are introduced incrementally after design review. Debate
+State now provides immutable configuration, lifecycle, and completed-statement
+records. It deliberately does not enforce speaker order or interruption rules;
+orchestration behavior does not yet exist.
 
 The Python source uses a `src` layout. The `polar_debate.debate_engine` package
 is the architectural home of Node 1, while provider-specific integrations and a
