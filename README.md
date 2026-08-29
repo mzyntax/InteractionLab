@@ -1,6 +1,6 @@
-# Polar Debate
+# Model Battlegrounds
 
-Polar Debate is a modular AI experimentation platform centered on structured,
+Model Battlegrounds is a modular AI experimentation platform centered on structured,
 multi-round debates. The backend is being developed as independently testable
 nodes, beginning with the Debate Engine.
 
