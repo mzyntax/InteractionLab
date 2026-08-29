@@ -14,13 +14,13 @@ file lightweight and expose only reviewed interfaces.
 Defines the public Debate Engine package surface. Add exports only after a
 component contract has been reviewed, implemented, and tested.
 
-## BRIEF.PY (FINISH)
+## DEBATER_IDENTITY.PY (FINISH)
 
 Defines the immutable position, commitments, flexibility, and objective assigned
 to one debater. It is finished because that approved identity contract is fully
 implemented and tested. Transcript, prompt, and character data belong elsewhere.
 
-## STATE.PY (BETA)
+## DEBATE_RECORD.PY (BETA)
 
 Stores immutable debate configuration, completed statements, round position,
 and lifecycle status. The current tuple transcript is simple and appropriate for
@@ -33,14 +33,14 @@ the domain model behind a transcript repository, preserve deterministic sequence
 and round ordering, and ensure a statement append and its state transition cannot
 diverge. Persistent storage requires design review before implementation.
 
-## ROUNDS.PY (BETA)
+## TURN_ORCHESTRATOR.PY (BETA)
 
-Enforces the initial A-then-B protocol and advances or completes Debate State.
+Enforces the initial A-then-B protocol and advances or completes the Debate Record.
 Potential extensions include multiple statements, explicit yields, configurable
 opening order, and controlled interruptions. Add them as explicit protocol rules
-while continuing to delegate transcript storage to Debate State.
+while continuing to delegate transcript storage to the Debate Record.
 
-## DEBATER.PY (BETA)
+## DEBATER_TURN_CONTRACT.PY (BETA)
 
 Defines stable Debater setup, changing public turn context, unaccepted statement
 proposals, and the provider-independent Debater protocol. Future model, human,

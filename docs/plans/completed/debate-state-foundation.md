@@ -47,8 +47,8 @@ Node 1: Debate Engine / Debate State
 - Ruff lint passes.
 - Mypy passes for all source files.
 - New and changed implementation files pass the Ruff format check.
-- The repository-wide format check remains blocked by a pre-existing
-  unformatted comment in `brief.py`.
+- The repository-wide format check remained blocked at implementation time by a
+  pre-existing unformatted comment now located in `debater_identity.py`.
 
 ## Deferred questions
 

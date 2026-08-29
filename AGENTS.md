@@ -61,7 +61,7 @@ Major modules should identify their architectural location.
 Example:
 
 NODE: Debate Engine
-COMPONENT: Debate State
+COMPONENT: Debate Record
 
 Briefly document purpose, inputs, outputs, and important relationships.
 

@@ -22,7 +22,7 @@ adding adherence mechanisms.
 
 ### Interruptions
 
-**Affected modules:** Debate State and Round Orchestration
+**Affected modules:** Debate Record and Turn Orchestrator
 
 Interruptions may make rebuttals feel more natural, but they can also fragment
 the debate or be overused.
@@ -33,7 +33,7 @@ moderation until basic turn-taking works and can be observed.
 
 ### Deterministic debate flow
 
-**Affected modules:** Debate State and Round Orchestration
+**Affected modules:** Debate Record and Turn Orchestrator
 
 Natural conversation features can make execution difficult to reproduce and
 test.
@@ -48,7 +48,7 @@ time. Keep initial execution synchronous.
 Different providers may refuse requests, format output differently, or impose
 different restrictions.
 
-Do not place provider-specific rules or errors inside Debate State. Translate
+Do not place provider-specific rules or errors inside the Debate Record. Translate
 them at the provider boundary when that component is designed.
 
 ### Judge influence during a debate

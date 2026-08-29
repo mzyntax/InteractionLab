@@ -1,4 +1,4 @@
-"""Tests for the provider-independent Debater boundary."""
+"""Tests for the provider-independent Debater Turn Contract."""
 
 from dataclasses import FrozenInstanceError
 

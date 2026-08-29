@@ -1,4 +1,4 @@
-"""Tests for the stable debater identity contract."""
+"""Tests for the Debater Identity contract."""
 
 from dataclasses import FrozenInstanceError
 

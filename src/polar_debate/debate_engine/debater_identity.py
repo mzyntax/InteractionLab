@@ -1,6 +1,6 @@
 """
 NODE: Debate Engine
-COMPONENT: Debater Brief
+COMPONENT: Debater Identity
 
 PURPOSE:
 Defines the stable position and commitments a debater carries through one
@@ -11,8 +11,9 @@ INPUTS:
 An assigned position, core commitments, permitted flexibility, and objective.
 
 OUTPUTS:
-An immutable ``DebaterBrief``. ``state.py`` will retain one brief per debater,
-and ``context.py`` will include the current speaker's brief in each model turn.
+An immutable ``DebaterBrief``. ``debate_record.py`` retains one brief per side,
+and ``debater_turn_contract.py`` exposes the current speaker's brief through
+``DebaterSetup``.
 """
 
 from dataclasses import dataclass

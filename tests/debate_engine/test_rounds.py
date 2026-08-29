@@ -1,4 +1,4 @@
-"""Tests for deterministic normal round orchestration."""
+"""Tests for the deterministic normal Turn Orchestrator."""
 
 import pytest
 

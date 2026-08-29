@@ -3,10 +3,10 @@
 ```text
 Application
 └── Node 1: Debate Engine [IN PROGRESS]
-    ├── Debater Brief [IMPLEMENTED]
-    ├── Debate State [IMPLEMENTED]
-    ├── Round Orchestration [IMPLEMENTED]
-    ├── Debater Boundary [IMPLEMENTED — NO MODEL]
+    ├── Debater Identity [IMPLEMENTED]
+    ├── Debate Record [IMPLEMENTED]
+    ├── Turn Orchestrator [IMPLEMENTED]
+    ├── Debater Turn Contract [IMPLEMENTED — NO MODEL]
     ├── Model Provider Boundary [REVIEW REQUIRED]
     ├── Research Boundary
     ├── Basic Claim Tracking

@@ -1,6 +1,6 @@
 """
 NODE: Debate Engine
-COMPONENT: Debater Boundary
+COMPONENT: Debater Turn Contract
 
 PURPOSE:
 Defines the stable setup, changing turn context, and provider-independent
@@ -11,24 +11,24 @@ Validated debate configuration and state exposed as a stable setup and public
 turn context.
 
 OUTPUTS:
-An unaccepted ``ProposedStatement`` for Round Orchestration to evaluate.
+An unaccepted ``ProposedStatement`` for the Turn Orchestrator to evaluate.
 
 RELATIONSHIPS:
-Concrete model or human implementations satisfy the ``Debater`` protocol. Round
-Orchestration decides whether a proposal is legal, and Debate State assigns its
-authoritative transcript metadata only after acceptance.
+Concrete model or human implementations satisfy the ``Debater`` protocol. The
+Turn Orchestrator decides whether a proposal is legal, and the Debate Record
+assigns its authoritative transcript metadata only after acceptance.
 """
 
 from dataclasses import dataclass
 from typing import Protocol
 
-from polar_debate.debate_engine.brief import DebaterBrief
-from polar_debate.debate_engine.state import (
+from polar_debate.debate_engine.debate_record import (
     DebateConfig,
     DebaterSide,
     DebateState,
     DebateStatement,
 )
+from polar_debate.debate_engine.debater_identity import DebaterBrief
 
 
 def _normalized_text(value: str, field_name: str) -> str:
@@ -105,7 +105,7 @@ class TurnContext:
 
     @classmethod
     def from_state(cls, state: DebateState) -> "TurnContext":
-        """Project only changing public turn information from Debate State."""
+        """Project only changing public turn information from the Debate Record."""
         return cls(current_round=state.current_round, transcript=state.statements)
 
 

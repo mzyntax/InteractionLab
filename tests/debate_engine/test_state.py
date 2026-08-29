@@ -1,4 +1,4 @@
-"""Tests for the Debate State structural contract."""
+"""Tests for the Debate Record structural contract."""
 
 from dataclasses import FrozenInstanceError
 

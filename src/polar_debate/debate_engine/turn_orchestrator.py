@@ -1,6 +1,6 @@
 """
 NODE: Debate Engine
-COMPONENT: Round Orchestration
+COMPONENT: Turn Orchestrator
 
 PURPOSE:
 Enforces the initial normal A-then-B speaking order and progresses accepted
@@ -13,12 +13,12 @@ OUTPUTS:
 The expected speaker or a new ``DebateState`` containing an accepted statement.
 
 RELATIONSHIPS:
-Debate State owns structural validation and transcript storage. This component
-owns normal speaker order and round progression. Prompt construction, model
-calls, and interruption rules belong to later components.
+The Debate Record owns structural validation and transcript storage. This
+component owns normal speaker order and round progression. Prompt construction,
+model calls, and interruption rules belong to later components.
 """
 
-from polar_debate.debate_engine.state import DebaterSide, DebateState
+from polar_debate.debate_engine.debate_record import DebaterSide, DebateState
 
 _NORMAL_ROUND_ORDER = (DebaterSide.A, DebaterSide.B)
 

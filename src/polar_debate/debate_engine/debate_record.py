@@ -1,6 +1,6 @@
 """
 NODE: Debate Engine
-COMPONENT: Debate State
+COMPONENT: Debate Record
 
 PURPOSE:
 Stores the configuration, completed statements, round, and lifecycle status for
@@ -14,14 +14,14 @@ Immutable ``DebateState`` snapshots consumed by future orchestration, context,
 research, and judging components.
 
 RELATIONSHIPS:
-The future Round Orchestrator decides speaker order, yields, and interruptions.
-This module records accepted statements and protects structural invariants.
+The Turn Orchestrator decides speaker order, yields, and interruptions. This
+module records accepted statements and protects structural invariants.
 """
 
 from dataclasses import dataclass, replace
 from enum import StrEnum
 
-from polar_debate.debate_engine.brief import DebaterBrief
+from polar_debate.debate_engine.debater_identity import DebaterBrief
 
 
 def _normalized_text(value: str, field_name: str) -> str:
@@ -40,7 +40,7 @@ class DebaterSide(StrEnum):
 
 
 class DebateStatus(StrEnum):
-    """Lifecycle states currently owned by Debate State."""
+    """Lifecycle states currently owned by the Debate Record."""
 
     ACTIVE = "active"
     COMPLETE = "complete"
