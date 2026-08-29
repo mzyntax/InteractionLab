@@ -63,9 +63,36 @@ Example:
 NODE: Debate Engine
 COMPONENT: Debate State
 
-Explain purpose, inputs, outputs, and important relationships.
+Briefly document purpose, inputs, outputs, and important relationships.
 
-Do not comment every line.
+Add comments for complex or non-obvious mechanisms when their role in accomplishing the component’s goal is not immediately clear.
+
+Comments should connect the mechanism to the surrounding system:
+
+# Append to a new transcript tuple so earlier DebateState snapshots remain
+# unchanged and can still represent previous debate states.
+return replace(self, statements=(*self.statements, statement))
+
+Do not explain Python syntax in isolation:
+
+# Bad: The asterisk unpacks the tuple.
+
+Explain what the mechanism achieves here:
+
+# Good: Preserve the existing transcript while creating the next immutable
+# state snapshot with the accepted statement appended.
+
+A useful comment should allow both a junior and an experienced developer to understand why the mechanism belongs in this component.
+
+Do not:
+
+comment every line
+restate names, types, or error messages
+narrate straightforward control flow
+duplicate nearby docstrings
+add generic language tutorials unrelated to the component’s goal
+
+Prefer concise comments that explain architectural intent, protected invariants, ownership boundaries, or the system-level purpose of a complex mechanism.
 
 ## Review Gates
 
