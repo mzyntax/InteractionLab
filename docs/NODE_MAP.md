@@ -5,8 +5,8 @@ Application
 └── Node 1: Debate Engine [IN PROGRESS]
     ├── Debater Brief [IMPLEMENTED]
     ├── Debate State [IMPLEMENTED]
-    ├── Round Orchestration [NEXT MILESTONE]
-    ├── Debater Boundary
+    ├── Round Orchestration [IMPLEMENTED]
+    ├── Debater Boundary [NEXT MILESTONE]
     ├── Research Boundary
     ├── Basic Claim Tracking
     ├── Judge Boundary

@@ -41,9 +41,15 @@ Round Orchestrator will own speaker order, statement allowances, yields, and
 interrupt legality. A stored statement is complete; model end signaling belongs
 to the future Debater boundary.
 
-The next proposed component is Round Orchestration. Its normal turn protocol and
-initial relationship to the deferred interrupt behavior require review before
-implementation.
+Round Orchestration is implemented as pure control-flow functions over
+`DebateState`. The initial protocol requires A to submit one completed statement
+followed by B. B's accepted response advances to the next round or completes the
+debate after the final round. Orchestration rejects state that does not follow
+this normal protocol and delegates transcript storage to Debate State.
+
+The next proposed component is the Debater Boundary. Prompt construction,
+provider independence, and the representation of model failures require review
+before implementation.
 
 ## Boundaries
 

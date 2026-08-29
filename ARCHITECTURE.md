@@ -10,14 +10,16 @@ replaced independently where practical.
 Application
 └── Node 1: Debate Engine [IN PROGRESS]
     ├── Debater Brief [IMPLEMENTED]
-    └── Debate State [IMPLEMENTED]
+    ├── Debate State [IMPLEMENTED]
+    └── Round Orchestration [IMPLEMENTED]
 ```
 
 Node 1 will coordinate deterministic debate rounds. Its internal components and
 public interfaces are introduced incrementally after design review. Debate
 State now provides immutable configuration, lifecycle, and completed-statement
-records. It deliberately does not enforce speaker order or interruption rules;
-orchestration behavior does not yet exist.
+records. Round Orchestration enforces the initial deterministic A-then-B order,
+then advances or completes the immutable state. Model calls and interruption
+behavior do not yet exist.
 
 The Python source uses a `src` layout. The `polar_debate.debate_engine` package
 is the architectural home of Node 1, while provider-specific integrations and a
