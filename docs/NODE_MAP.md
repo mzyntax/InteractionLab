@@ -6,7 +6,8 @@ Application
     ├── Debater Brief [IMPLEMENTED]
     ├── Debate State [IMPLEMENTED]
     ├── Round Orchestration [IMPLEMENTED]
-    ├── Debater Boundary [NEXT MILESTONE]
+    ├── Debater Boundary [IMPLEMENTED — NO MODEL]
+    ├── Model Provider Boundary [REVIEW REQUIRED]
     ├── Research Boundary
     ├── Basic Claim Tracking
     ├── Judge Boundary

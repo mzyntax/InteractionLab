@@ -47,9 +47,17 @@ followed by B. B's accepted response advances to the next round or completes the
 debate after the final round. Orchestration rejects state that does not follow
 this normal protocol and delegates transcript storage to Debate State.
 
-The next proposed component is the Debater Boundary. Prompt construction,
-provider independence, and the representation of model failures require review
-before implementation.
+The provider-independent Debater Boundary is implemented. A Debater owns an
+immutable setup derived from Debate Configuration and receives an immutable
+public turn context when asked to speak. It returns a `ProposedStatement` with
+no authoritative transcript metadata. Round Orchestration decides whether to
+accept that proposal before Debate State records it.
+
+The boundary is synchronous and can be implemented by deterministic test
+doubles, future model adapters, or human-controlled debaters. It contains no
+prompt renderer, provider client, API call, or model generation. Choosing a
+model-provider boundary and prompt-construction responsibility requires the next
+design review.
 
 ## Boundaries
 

@@ -8,6 +8,12 @@ reviewed.
 """
 
 from polar_debate.debate_engine.brief import DebaterBrief
+from polar_debate.debate_engine.debater import (
+    Debater,
+    DebaterSetup,
+    ProposedStatement,
+    TurnContext,
+)
 from polar_debate.debate_engine.rounds import accept_statement, expected_speaker
 from polar_debate.debate_engine.state import (
     DebateConfig,
@@ -22,8 +28,12 @@ __all__ = [
     "DebateState",
     "DebateStatement",
     "DebateStatus",
+    "Debater",
     "DebaterBrief",
+    "DebaterSetup",
     "DebaterSide",
+    "ProposedStatement",
+    "TurnContext",
     "accept_statement",
     "expected_speaker",
 ]
