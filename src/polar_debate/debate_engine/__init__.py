@@ -25,6 +25,7 @@ from polar_debate.debate_engine.debater_turn_contract import (
     ProposedStatement,
     TurnContext,
 )
+from polar_debate.debate_engine.model_debater import ModelDebater
 from polar_debate.debate_engine.text_generation_contract import (
     GenerationSettings,
     TextGenerator,
@@ -42,6 +43,7 @@ __all__ = [
     "DebaterSetup",
     "DebaterSide",
     "GenerationSettings",
+    "ModelDebater",
     "ProposedStatement",
     "TextGenerator",
     "TurnContext",

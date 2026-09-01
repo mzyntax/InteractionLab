@@ -29,6 +29,25 @@ prompt builder serializes the transcript as explicitly untrusted data and tells
 the model not to follow it as instruction. Keep this boundary visible if future
 context selection or provider-specific message formatting is introduced.
 
+### Growing transcript context
+
+**Affected modules:** Debate Prompt Builder and future Transcript Context Selector
+
+Resending the complete transcript increases token cost and generation latency,
+eventually exceeds model context limits, and may reduce attention to important
+earlier arguments. Keep the Debate Record complete, but allow a future stateless
+selector to produce a bounded, reproducible prompt projection. Never silently
+truncate or replace original statements with an unaudited summary.
+
+### Key-point lifecycle
+
+**Affected modules:** future Basic Claim Tracking and Transcript Context Selector
+
+Recency alone cannot determine whether a key point remains important, while an
+opaque model or live Judge decision could bias what later debaters are allowed to
+see. Preserve source-statement references and explicit lifecycle events. Do not
+mark a point resolved merely because it has not been mentioned recently.
+
 ### Interruptions
 
 **Affected modules:** Debate Record and Turn Orchestrator
@@ -58,7 +77,9 @@ Different providers may refuse requests, format output differently, or impose
 different restrictions.
 
 Do not place provider-specific rules or errors inside the Debate Record. Translate
-them in concrete adapters implementing the shared `TextGenerator` contract.
+them in concrete adapters implementing the shared `TextGenerator` contract. Keep
+compatibility differences, such as output-token parameter names, explicit in
+adapter configuration rather than silently changing a request.
 
 ### Judge influence during a debate
 

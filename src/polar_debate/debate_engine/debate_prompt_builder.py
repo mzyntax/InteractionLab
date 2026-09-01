@@ -92,10 +92,10 @@ def build_debate_prompt(setup: DebaterSetup, context: TurnContext) -> DebateProm
     if context.current_round > setup.total_rounds:
         raise ValueError("current_round cannot exceed the configured total rounds")
 
-    side = setup.side.value.upper()
+    side_label = setup.side.value.upper()
     commitments = "\n".join(f"- {commitment}" for commitment in setup.brief.core_commitments)
     assignment = f"""Topic: {setup.topic}
-    Assigned side: Debater {side}
+    Assigned side: Debater {side_label}
     Assigned position: {setup.brief.assigned_position}
     Core commitments:
     {commitments}
@@ -115,12 +115,12 @@ def build_debate_prompt(setup: DebaterSetup, context: TurnContext) -> DebateProm
     transcript_context = json.dumps(transcript, ensure_ascii=False, indent=2)
 
     current_task = f"""This is round {context.current_round} of {setup.total_rounds}.
-    Produce one complete normal debate statement for Debater {side}. Make the statement
+    Produce one complete normal debate statement for Debater {side_label}. Make the statement
     responsive to the public transcript while remaining grounded in the assignment.
     End after the statement."""
 
     return DebatePrompt(
-        role_instructions=_ROLE_INSTRUCTIONS.format(side=side),
+        role_instructions=_ROLE_INSTRUCTIONS.format(side=side_label),
         assignment=assignment,
         response_standards=_RESPONSE_STANDARDS,
         transcript_context=transcript_context,

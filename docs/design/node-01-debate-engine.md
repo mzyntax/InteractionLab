@@ -73,17 +73,26 @@ turn legality. The initial version includes the full accepted transcript; later
 context selection must remain outside the Debate Record and preserve reproducible
 inputs.
 
-The Text Generator Contract in `text_generation_contract.py` is implemented. It defines
-immutable temperature, output-token, and optional seed settings plus the
+The Text Generator Contract in `text_generation_contract.py` is implemented. It
+defines immutable temperature, output-token, and optional seed settings plus the
 synchronous `TextGenerator` protocol. Every implementation exposes its exact
 public model or checkpoint identity, accepts rendered prompt text, and returns
 raw text without applying debate rules.
 
 The contract deliberately contains no provider client, authentication, retry,
 response parsing, or model selection. Hosted, local, and modified-model adapters
-translate those concerns behind the same boundary. A future model-backed Debater
-will connect the Prompt Builder to a supplied Text Generator and turn successful
-raw output into a `ProposedStatement`.
+translate those concerns behind the same boundary.
+
+The Model Debater in `model_debater.py` is implemented. It carries one immutable
+setup, injected Text Generator, and generation settings. For each supplied
+`TurnContext`, it builds and renders a fresh Debate Prompt, requests raw text from
+the generator, and returns a `ProposedStatement`. It does not create provider
+connections, enforce turn order, record content, retry failures, or judge output.
+
+The first concrete `TextGenerator` implementation lives outside this node in
+`polar_debate.model_providers.openai_compatible`. It translates the shared call
+into an OpenAI-compatible Chat Completions HTTP request. The Debate Engine imports
+neither that adapter nor its provider-specific error type.
 
 ## Boundaries
 

@@ -2,17 +2,20 @@
 
 ```text
 Application
-└── Node 1: Debate Engine [IN PROGRESS]
-    ├── Debater Identity [IMPLEMENTED]
-    ├── Debate Record [IMPLEMENTED]
-    ├── Turn Orchestrator [IMPLEMENTED]
-    ├── Debater Turn Contract [IMPLEMENTED — NO MODEL]
-    ├── Debate Prompt Builder [IMPLEMENTED — NO MODEL]
-    ├── Text Generator Contract [IMPLEMENTED — NO PROVIDER]
-    ├── Research Boundary
-    ├── Basic Claim Tracking
-    ├── Judge Boundary
-    └── Debate Result
+├── Node 1: Debate Engine [IN PROGRESS]
+│   ├── Debater Identity [IMPLEMENTED]
+│   ├── Debate Record [IMPLEMENTED]
+│   ├── Turn Orchestrator [IMPLEMENTED]
+│   ├── Debater Turn Contract [IMPLEMENTED — NO MODEL]
+│   ├── Debate Prompt Builder [IMPLEMENTED — NO MODEL]
+│   ├── Text Generator Contract [IMPLEMENTED]
+│   ├── Model Debater [IMPLEMENTED]
+│   ├── Research Boundary
+│   ├── Basic Claim Tracking
+│   ├── Judge Boundary
+│   └── Debate Result
+└── Model Provider Integrations [IN PROGRESS]
+    └── OpenAI-Compatible Adapter [IMPLEMENTED]
 
 Future
 ├── Research Engine

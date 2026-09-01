@@ -62,6 +62,25 @@ provider-independent text-generation protocol. Future extensions may add samplin
 controls or error categories after concrete adapters expose a shared need. Keep
 provider clients, authentication, retries, and debate behavior outside this file.
 
+## MODEL_DEBATER.PY (BETA)
+
+Connects stable debater setup and current turn context to an injected Text
+Generator, returning raw output as an unaccepted proposal. Future extensions may
+integrate approved recording or failure policies around the call. Keep provider
+creation, turn enforcement, transcript storage, and judging outside this file.
+
+## MODEL_PROVIDERS/\_\_INIT\_\_.PY (BETA)
+
+Exposes reviewed concrete model-provider adapters. Keep imports lightweight and
+do not turn this package boundary into provider-selection control flow.
+
+## MODEL_PROVIDERS/OPENAI_COMPATIBLE.PY (BETA)
+
+Implements synchronous Chat Completions generation for a configured compatible
+endpoint. Future work may add connection pooling or broader response support when
+real endpoints demonstrate a need. Keep secrets out of representations and keep
+debate behavior, retries, provider selection, and logging outside this adapter.
+
 ## TEST_PACKAGE.PY (BETA)
 
 Smoke-tests the package boundary. Extend it when new public components are
@@ -99,3 +118,16 @@ selection cases only when those extensions are approved.
 Covers settings validation and immutability, exact model identity, raw text
 return, and structural fake-generator compatibility. Add adapter-specific tests
 beside each future adapter rather than expanding this contract test suite.
+
+## TEST_MODEL_DEBATER.PY (BETA)
+
+Covers prompt handoff, exact settings, replaceable generators, proposal creation,
+state separation, visible failures, and immutability. Add provider behavior to
+adapter-specific tests rather than this component suite.
+
+## TEST_OPENAI_COMPATIBLE.PY (BETA)
+
+Covers request translation, model identity, authentication privacy, optional
+settings, raw response extraction, configuration validation, and provider errors.
+Add live endpoint tests only when their credentials and execution policy are
+explicitly designed.

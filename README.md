@@ -8,7 +8,10 @@ Node 1 is under incremental development. Stable debater briefs and the
 structural debate state are implemented, along with deterministic normal round
 orchestration, a provider-independent Debater contract, and deterministic prompt
 construction. A provider-independent text-generation contract is also implemented;
-concrete model integration does not yet exist.
+the Model Debater now connects these pieces into unaccepted statement proposals.
+The first concrete adapter can call configurable OpenAI-compatible Chat
+Completions endpoints. Provider selection and the complete CLI loop do not yet
+exist.
 
 ## Development
 
