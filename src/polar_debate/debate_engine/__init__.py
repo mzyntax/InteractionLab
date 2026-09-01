@@ -7,6 +7,10 @@ Node 1 behavior is added incrementally after each component interface is
 reviewed.
 """
 
+from polar_debate.debate_engine.debate_prompt_builder import (
+    DebatePrompt,
+    build_debate_prompt,
+)
 from polar_debate.debate_engine.debate_record import (
     DebateConfig,
     DebaterSide,
@@ -21,10 +25,15 @@ from polar_debate.debate_engine.debater_turn_contract import (
     ProposedStatement,
     TurnContext,
 )
+from polar_debate.debate_engine.text_generation_contract import (
+    GenerationSettings,
+    TextGenerator,
+)
 from polar_debate.debate_engine.turn_orchestrator import accept_statement, expected_speaker
 
 __all__ = [
     "DebateConfig",
+    "DebatePrompt",
     "DebateState",
     "DebateStatement",
     "DebateStatus",
@@ -32,8 +41,11 @@ __all__ = [
     "DebaterBrief",
     "DebaterSetup",
     "DebaterSide",
+    "GenerationSettings",
     "ProposedStatement",
+    "TextGenerator",
     "TurnContext",
     "accept_statement",
+    "build_debate_prompt",
     "expected_speaker",
 ]

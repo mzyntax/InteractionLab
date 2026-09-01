@@ -12,7 +12,9 @@ Application
     ├── Debater Identity [IMPLEMENTED]
     ├── Debate Record [IMPLEMENTED]
     ├── Turn Orchestrator [IMPLEMENTED]
-    └── Debater Turn Contract [IMPLEMENTED — NO MODEL]
+    ├── Debater Turn Contract [IMPLEMENTED — NO MODEL]
+    ├── Debate Prompt Builder [IMPLEMENTED — NO MODEL]
+    └── Text Generator Contract [IMPLEMENTED — NO PROVIDER]
 ```
 
 Node 1 will coordinate deterministic debate rounds. Its internal components and
@@ -21,8 +23,12 @@ Record provides immutable configuration, lifecycle, and completed-statement
 records. The Turn Orchestrator enforces the initial deterministic A-then-B
 order, then advances or completes that record. The Debater Turn Contract defines
 stable setup, changing turn context, and unaccepted statement proposals without
-selecting or calling a model provider. Model generation and interruption behavior
-do not yet exist.
+selecting or calling a model provider. The Debate Prompt Builder deterministically
+turns that setup and context into a structured prompt for one normal statement.
+It retains no memory and does not enforce turns. The Text Generator Contract
+defines the common synchronous call, model identity, and reproducible settings
+that future provider adapters must expose. No concrete model integration or
+interruption behavior exists yet.
 
 The Python source uses a `src` layout. The `polar_debate.debate_engine` package
 is the architectural home of Node 1, while provider-specific integrations and a

@@ -7,7 +7,8 @@ Application
     ├── Debate Record [IMPLEMENTED]
     ├── Turn Orchestrator [IMPLEMENTED]
     ├── Debater Turn Contract [IMPLEMENTED — NO MODEL]
-    ├── Model Provider Boundary [REVIEW REQUIRED]
+    ├── Debate Prompt Builder [IMPLEMENTED — NO MODEL]
+    ├── Text Generator Contract [IMPLEMENTED — NO PROVIDER]
     ├── Research Boundary
     ├── Basic Claim Tracking
     ├── Judge Boundary

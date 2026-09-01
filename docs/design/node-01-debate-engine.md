@@ -57,11 +57,33 @@ It supports the runtime flow but is not itself a runtime step. The Turn
 Orchestrator decides whether to accept a proposal before the Debate Record stores
 its content.
 
-The boundary is synchronous and can be implemented by deterministic test
-doubles, future model adapters, or human-controlled debaters. It contains no
-prompt renderer, provider client, API call, or model generation. Choosing a
-model-provider boundary and prompt-construction responsibility requires the next
-design review.
+The Debater boundary is synchronous and can be implemented by deterministic test
+doubles, future model adapters, or human-controlled debaters.
+
+The Debate Prompt Builder in `debate_prompt_builder.py` is implemented. It is a
+stateless function from `DebaterSetup` and `TurnContext` to an immutable,
+provider-independent `DebatePrompt`. The prompt exposes consistently ordered role,
+assignment, response-standard, public-transcript, and current-task sections. It
+asks for strong, evidence-bounded representation of the assigned position and one
+completed normal statement in natural prose.
+
+Accepted transcript statements are serialized as untrusted data, and a new prompt
+is reconstructed for every turn. The builder neither stores memory nor decides
+turn legality. The initial version includes the full accepted transcript; later
+context selection must remain outside the Debate Record and preserve reproducible
+inputs.
+
+The Text Generator Contract in `text_generation_contract.py` is implemented. It defines
+immutable temperature, output-token, and optional seed settings plus the
+synchronous `TextGenerator` protocol. Every implementation exposes its exact
+public model or checkpoint identity, accepts rendered prompt text, and returns
+raw text without applying debate rules.
+
+The contract deliberately contains no provider client, authentication, retry,
+response parsing, or model selection. Hosted, local, and modified-model adapters
+translate those concerns behind the same boundary. A future model-backed Debater
+will connect the Prompt Builder to a supplied Text Generator and turn successful
+raw output into a `ProposedStatement`.
 
 ## Boundaries
 
@@ -72,3 +94,7 @@ design review.
 - Persistence and CLI boundaries remain undecided.
 - Debater identities are stable inputs; evolving transcripts and private judge
   analysis must not be added to them.
+- Prompt construction must remain deterministic and provider-independent;
+  generation settings belong to the Text Generator and future recording boundary.
+- Provider adapters own transport-specific settings and errors; they must not add
+  provider behavior to the Debate Record or Turn Orchestrator.

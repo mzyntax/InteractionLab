@@ -10,7 +10,7 @@ When a concern becomes an actual design decision, record the chosen approach in
 
 ### Model adherence to assigned positions
 
-**Affected module:** Debater Context
+**Affected module:** Debate Prompt Builder
 
 Some models may weaken, disclaim, or refuse certain assigned positions. The
 current `DebaterBrief` only stores the assignment; it does not control model
@@ -19,6 +19,15 @@ behavior.
 For now, preserve a clear separation between representing a position and
 personally endorsing it. Observe real transcripts before changing prompts or
 adding adherence mechanisms.
+
+### Untrusted transcript content
+
+**Affected module:** Debate Prompt Builder
+
+An accepted statement can contain text that resembles model instructions. The
+prompt builder serializes the transcript as explicitly untrusted data and tells
+the model not to follow it as instruction. Keep this boundary visible if future
+context selection or provider-specific message formatting is introduced.
 
 ### Interruptions
 
@@ -43,13 +52,13 @@ time. Keep initial execution synchronous.
 
 ### Provider-specific behavior
 
-**Affected module:** Model Provider Boundary
+**Affected module:** Text Generator and future provider adapters
 
 Different providers may refuse requests, format output differently, or impose
 different restrictions.
 
 Do not place provider-specific rules or errors inside the Debate Record. Translate
-them at the provider boundary when that component is designed.
+them in concrete adapters implementing the shared `TextGenerator` contract.
 
 ### Judge influence during a debate
 

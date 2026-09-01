@@ -6,8 +6,9 @@ nodes, beginning with the Debate Engine.
 
 Node 1 is under incremental development. Stable debater briefs and the
 structural debate state are implemented, along with deterministic normal round
-orchestration and a provider-independent Debater contract. Model integration
-does not yet exist.
+orchestration, a provider-independent Debater contract, and deterministic prompt
+construction. A provider-independent text-generation contract is also implemented;
+concrete model integration does not yet exist.
 
 ## Development
 

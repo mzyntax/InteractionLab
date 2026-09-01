@@ -66,6 +66,11 @@ Development happens incrementally.
 
 The initial product is an AI debate laboratory.
 
+The immediate priority is a normal provider-independent model-versus-model
+debate environment that runs from the command line. Research, judging, richer
+claim analysis, and experimental comparison features should build on that
+working loop rather than block it.
+
 A user defines:
 
 * a topic,
@@ -74,6 +79,25 @@ A user defines:
 * and debate parameters.
 
 Two AI agents receive opposing positions.
+
+Each model-backed debater receives a deliberately structured model input that
+includes:
+
+* its assigned position,
+* core commitments,
+* allowed flexibility,
+* debate objective,
+* debate rules,
+* current round,
+* relevant transcript context,
+* the opponent's public position,
+* and the specific action it must produce.
+
+A dedicated prompt-construction component turns this information into a
+consistent prompt skeleton. Its purpose is to help the model strongly and
+faithfully represent its assignment while following the debate rules. The
+prompt guides behavior; deterministic orchestration remains responsible for
+legal turns and records only accepted statements.
 
 They:
 
@@ -84,6 +108,11 @@ They:
 5. challenge evidence,
 6. identify contradictions,
 7. continue for multiple rounds.
+
+The user-facing debate should organize arguments around identifiable key points
+that an opponent or user can highlight and challenge directly. The initial
+system should discourage an uncontrolled tree of increasingly minor subpoints;
+complete claim-graph behavior remains future work.
 
 A separate Judge model observes the debate.
 
@@ -134,6 +163,10 @@ Responsibilities:
 * produce a structured DebateResult.
 
 Node 1 must work completely from the command line without a frontend.
+
+Its first operational milestone is the normal two-model debate loop and CLI
+transcript. Research, judging, and structured reporting remain part of the full
+Node 1 destination.
 
 ---
 
@@ -296,6 +329,8 @@ Node 1 should initially contain concepts similar to:
 DebateEngine
 │
 ├── DebateState
+├── PromptConstruction
+├── TextGenerator
 ├── Debater
 │   ├── Debater A
 │   └── Debater B
@@ -329,6 +364,20 @@ Generates debate behavior for an assigned position.
 
 It should not know how the entire application works.
 
+### PromptConstruction
+
+Builds a consistent, structured model input from a debater's assignment,
+current public context, debate rules, and requested action.
+
+It should not enforce legal turns, select a provider, or record model output.
+
+### TextGenerator
+
+Provides injected text generation behind a small provider-independent boundary.
+
+It should not contain debate orchestration or require the Debate Engine to know
+whether generation comes from a hosted, local, or modified local model.
+
 ### ResearchService
 
 Retrieves research.
@@ -353,11 +402,59 @@ Represents structured final output.
 
 It should not contain orchestration logic.
 
+### Future ExperimentRecorder
+
+May preserve reproducibility data for behavioral comparisons after the normal
+CLI debate loop works.
+
+It should record observable inputs and outputs without claiming to identify the
+internal weight-level cause of model behavior.
+
 ---
 
 # 6. Debate Flow
 
-The initial conceptual flow is:
+The current implementation order is:
+
+```text
+Structured prompt construction
+    ↓
+One provider-independent text-generator boundary
+    ↓
+Two instantiated model debaters
+    ↓
+Complete deterministic debate loop
+    ↓
+CLI transcript
+    ↓
+Lightweight reproducibility logging
+    ↓
+Future normal-versus-abliterated experiments
+```
+
+The immediate runtime flow is:
+
+```text
+User Input
+    ↓
+Create DebateState and two model-backed debaters
+    ↓
+Orchestrator identifies the legal speaker
+    ↓
+Build structured model input
+    ↓
+Injected text generator produces a proposal
+    ↓
+Orchestrator accepts or rejects the proposal
+    ↓
+Record accepted content
+    ↓
+Repeat through deterministic rounds
+    ↓
+CLI transcript
+```
+
+Once that loop works, the fuller Node 1 flow expands to:
 
 ```text
 User Input
@@ -763,6 +860,11 @@ External model calls should be mockable.
 
 We should be able to test Node 1 without spending API tokens for every unit test.
 
+Prompt construction and text-generation boundaries should be testable with
+deterministic fixtures and fake generators. Later reproducibility records should
+be tested for faithful capture of observable inputs, settings, responses, and
+acceptance outcomes.
+
 ---
 
 # 18. Model Provider Independence
@@ -774,13 +876,29 @@ Eventually we may experiment with:
 * OpenAI models,
 * local Hugging Face models,
 * other hosted models,
+* modified local models,
 * different models for different agents.
 
-Design an interface boundary.
+Use an injected text-generation boundary so the same debate flow can eventually
+run hosted models, ordinary local models, and modified local models without
+rewriting orchestration.
 
 Do not build an overly complicated provider system yet.
 
 We only need enough abstraction that replacing the provider does not require rewriting DebateEngine.
+
+A later lightweight recording component may preserve:
+
+* exact model or checkpoint identity,
+* exact prompt sent,
+* generation settings,
+* raw model response,
+* debater side,
+* round,
+* and whether the resulting proposal was accepted or rejected.
+
+This record supports reproducible behavioral evidence. It does not reveal the
+exact internal weight-level cause of a model's behavior.
 
 ---
 
@@ -808,9 +926,27 @@ Provider behavior should therefore remain separate from the application's debate
 
 Do not attempt to circumvent provider safeguards.
 
+## Future Experimental Mode
+
+A future subsystem may compare an ordinary model with an abliterated version
+produced using tools such as OBLITERATUS. Reproducible prompts, settings, raw
+responses, and debate outcomes could support experiments involving refusal
+differences, position adherence, framing effects, model tendencies, and other
+observable behavioral traits.
+
+Detailed bias evaluation, controlled counterfactual experiments, mechanistic
+interpretability, and complete OBLITERATUS integration are not part of the
+immediate milestone. Mechanistic claims would require a separate interpretability
+project rather than inference from prompt and output logs alone.
+
 ---
 
 # 20. Node 1 Definition of Done
+
+Before the complete Node 1 definition below, the immediate milestone is done
+when two injected model-backed debaters can complete deterministic rounds from
+the command line and produce a readable transcript using consistent structured
+prompts. Lightweight reproducibility logging follows that working loop.
 
 Node 1 is complete when I can run the application from a terminal and perform something resembling:
 

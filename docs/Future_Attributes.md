@@ -48,6 +48,20 @@ or character-backed implementations should satisfy this protocol rather than
 add generation behavior to orchestration or state. Extend proposal types only
 when yields or interruptions have approved protocol rules.
 
+## DEBATE_PROMPT_BUILDER.PY (BETA)
+
+Builds a fresh, immutable prompt from stable setup and current public context.
+Future extensions may add prompt versioning, context-window selection, and new
+approved action types. Keep it stateless, deterministic, provider-independent,
+and separate from model calls and turn enforcement.
+
+## TEXT_GENERATION_CONTRACT.PY (BETA)
+
+Defines immutable shared generation settings and the synchronous,
+provider-independent text-generation protocol. Future extensions may add sampling
+controls or error categories after concrete adapters expose a shared need. Keep
+provider clients, authentication, retries, and debate behavior outside this file.
+
 ## TEST_PACKAGE.PY (BETA)
 
 Smoke-tests the package boundary. Extend it when new public components are
@@ -73,3 +87,15 @@ yield, statement-allocation, opening-order, or interruption rule.
 Covers setup projection, opponent privacy, turn context, proposal validation,
 fake Protocol compatibility, and proposal acceptance without model generation.
 Add provider-specific tests later at the provider boundary, not here.
+
+## TEST_DEBATE_PROMPT_BUILDER.PY (BETA)
+
+Covers prompt completeness, opponent privacy, transcript isolation, deterministic
+rendering, immutability, and fresh-context continuity. Add versioning and context
+selection cases only when those extensions are approved.
+
+## TEST_TEXT_GENERATION_CONTRACT.PY (BETA)
+
+Covers settings validation and immutability, exact model identity, raw text
+return, and structural fake-generator compatibility. Add adapter-specific tests
+beside each future adapter rather than expanding this contract test suite.
