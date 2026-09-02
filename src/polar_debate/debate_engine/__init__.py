@@ -18,6 +18,7 @@ from polar_debate.debate_engine.debate_record import (
     DebateStatement,
     DebateStatus,
 )
+from polar_debate.debate_engine.debate_runner import run_debate
 from polar_debate.debate_engine.debater_identity import DebaterBrief
 from polar_debate.debate_engine.debater_turn_contract import (
     Debater,
@@ -50,4 +51,5 @@ __all__ = [
     "accept_statement",
     "build_debate_prompt",
     "expected_speaker",
+    "run_debate",
 ]

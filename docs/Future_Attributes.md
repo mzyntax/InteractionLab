@@ -20,6 +20,13 @@ Defines the immutable position, commitments, flexibility, and objective assigned
 to one debater. It is finished because that approved identity contract is fully
 implemented and tested. Transcript, prompt, and character data belong elsewhere.
 
+A future reviewed contract may let an assignment identify a represented
+perspective and attach normalized reference material. Keep the perspective
+(whose view is being represented), grounding material (what defines that view),
+and debate evidence (what supports a factual claim) conceptually distinct. Do not
+add URL retrieval, document parsing, or video transcript extraction to this
+module.
+
 ## DEBATE_RECORD.PY (BETA)
 
 Stores immutable debate configuration, completed statements, round position,
@@ -68,6 +75,54 @@ Connects stable debater setup and current turn context to an injected Text
 Generator, returning raw output as an unaccepted proposal. Future extensions may
 integrate approved recording or failure policies around the call. Keep provider
 creation, turn enforcement, transcript storage, and judging outside this file.
+
+## DEBATE_RUNNER.PY (BETA)
+
+Validates that two Debaters match the authoritative debate configuration, then
+composes state-derived turn context, proposal generation, and deterministic
+acceptance until the debate is complete. Potential extensions include observable
+execution events or an injected recording boundary after those contracts are
+reviewed. Keep CLI interaction, provider selection, source ingestion, retries,
+research, and transcript presentation outside this module.
+
+## REFERENCE MATERIAL CONTRACT (FUTURE)
+
+May represent normalized material used to ground an assigned perspective. Likely
+attributes include exact content, a human-readable title, optional author, source
+kind, and original locator. The contract should preserve the exact content used
+for reproducibility and identify imported text as untrusted prompt data. Its final
+location and relationship to `DebaterBrief` require design review.
+
+Identity-grounding references must remain distinguishable from evidence offered
+for debate claims. A single source may eventually serve both roles, but that must
+be explicit rather than inferred from its presence.
+
+## SOURCE INGESTION (FUTURE)
+
+May turn pasted text, files, webpages, or video links into normalized Reference
+Material before debate execution. Provider-specific retrieval, transcript
+extraction, provenance capture, and failures belong here or behind its adapters,
+not in the CLI, Debate Runner, or Prompt Builder. Automatic retrieval and its
+dependency choices require architectural review.
+
+## CLI.PY AND \_\_MAIN\_\_.PY (BETA)
+
+Collect simple debate inputs, construct provider and debater dependencies, invoke
+`run_debate()`, and present its result through an executable package entry point.
+The initial version uses standard-library terminal input and output, accepts an
+independent endpoint and model for each side, and reads optional secrets only
+from environment variables. Future flags, configuration files, named provider
+profiles, generation controls, and source locators should translate into reviewed
+application contracts rather than adding debate, retrieval, or prompt-building
+rules to the CLI. Live transcript output requires a separate observable runner
+contract rather than placing turn execution in this boundary.
+
+## TEST_CLI.PY (BETA)
+
+Covers input-to-application assembly, independent authenticated and keyless model
+connections, completed transcript presentation, secret non-disclosure, and early
+input validation. Future configuration formats and presentation modes should be
+tested here without real network calls.
 
 ## MODEL_PROVIDERS/\_\_INIT\_\_.PY (BETA)
 
@@ -124,6 +179,12 @@ beside each future adapter rather than expanding this contract test suite.
 Covers prompt handoff, exact settings, replaceable generators, proposal creation,
 state separation, visible failures, and immutability. Add provider behavior to
 adapter-specific tests rather than this component suite.
+
+## TEST_DEBATE_RUNNER.PY (BETA)
+
+Covers deterministic completion, state-derived context, partial-state resumption,
+completed input, participant wiring, and visible proposal failures. Add event or
+recording tests only if those future runner extension contracts are approved.
 
 ## TEST_OPENAI_COMPATIBLE.PY (BETA)
 

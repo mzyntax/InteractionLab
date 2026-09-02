@@ -8,6 +8,7 @@ replaced independently where practical.
 
 ```text
 Application
+├── CLI [IMPLEMENTED — INITIAL INTERACTIVE GATE]
 ├── Node 1: Debate Engine [IN PROGRESS]
 │   ├── Debater Identity [IMPLEMENTED]
 │   ├── Debate Record [IMPLEMENTED]
@@ -15,7 +16,8 @@ Application
 │   ├── Debater Turn Contract [IMPLEMENTED — NO MODEL]
 │   ├── Debate Prompt Builder [IMPLEMENTED — NO MODEL]
 │   ├── Text Generator Contract [IMPLEMENTED]
-│   └── Model Debater [IMPLEMENTED]
+│   ├── Model Debater [IMPLEMENTED]
+│   └── Debate Runner [IMPLEMENTED]
 └── Model Provider Integrations [IN PROGRESS]
     └── OpenAI-Compatible Adapter [IMPLEMENTED]
 ```
@@ -31,19 +33,22 @@ turns that setup and context into a structured prompt for one normal statement.
 It retains no memory and does not enforce turns. The Text Generator Contract
 defines the common synchronous call, model identity, and reproducible settings
 that future provider adapters must expose. The Model Debater combines those
-pieces into one proposal-producing turn without accepting or recording it.
-Provider selection, complete debate execution, and interruption behavior do not
-yet exist.
+pieces into one proposal-producing turn without accepting or recording it. The
+Debate Runner validates the two participant setups and synchronously composes
+those proposal turns with the Turn Orchestrator until it returns a completed
+Debate State. Reusable provider profiles and interruption behavior do not yet exist.
 
 The first concrete provider integration lives outside the Debate Engine in
 `polar_debate.model_providers`. Its OpenAI-compatible adapter holds endpoint and
 model configuration, translates generation settings into a Chat Completions HTTP
-request, and returns raw assistant text through the shared contract. Provider
-selection and the CLI do not yet exist.
+request, and returns raw assistant text through the shared contract. The CLI
+currently performs explicit provider selection by collecting an endpoint and
+model for each side; reusable provider profiles do not yet exist.
 
 The Python source uses a `src` layout. The `polar_debate.debate_engine` package
 is the architectural home of Node 1. Provider-specific integrations live in
-`polar_debate.model_providers`; the CLI boundary has not yet been designed.
+`polar_debate.model_providers`. The initial `polar_debate.cli` boundary collects
+terminal input, assembles those components, and presents the completed transcript.
 
 See `docs/NODE_MAP.md` for node status and
 `docs/design/node-01-debate-engine.md` for the approved initial package plan.

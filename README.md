@@ -9,9 +9,25 @@ structural debate state are implemented, along with deterministic normal round
 orchestration, a provider-independent Debater contract, and deterministic prompt
 construction. A provider-independent text-generation contract is also implemented;
 the Model Debater now connects these pieces into unaccepted statement proposals.
-The first concrete adapter can call configurable OpenAI-compatible Chat
-Completions endpoints. Provider selection and the complete CLI loop do not yet
-exist.
+The synchronous Debate Runner connects two configured debaters to deterministic
+orchestration and returns a completed debate record. The first concrete adapter
+can call configurable OpenAI-compatible Chat Completions endpoints. Provider
+selection is explicit in the initial interactive CLI.
+
+## Run a debate
+
+Set an API key for either side that needs one. Unset keys are supported for local
+or otherwise unauthenticated endpoints.
+
+```bash
+export POLAR_DEBATE_A_API_KEY="..."
+export POLAR_DEBATE_B_API_KEY="..."
+uv run model-battlegrounds
+```
+
+The CLI asks for the topic, positions, rounds, and independent endpoint and model
+values for Debaters A and B. API keys are read only from the environment and are
+not displayed. The initial transcript is printed after the debate completes.
 
 ## Development
 

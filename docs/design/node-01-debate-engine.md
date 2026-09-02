@@ -11,6 +11,7 @@ embedding model-provider, research-provider, or frontend behavior.
 
 - Debate topic
 - Position A and Position B
+- Future represented perspectives and normalized identity-grounding references
 - Number of rounds
 - Replaceable debater, research, claim-tracking, and judge collaborators
 
@@ -94,16 +95,35 @@ The first concrete `TextGenerator` implementation lives outside this node in
 into an OpenAI-compatible Chat Completions HTTP request. The Debate Engine imports
 neither that adapter nor its provider-specific error type.
 
+The Debate Runner in `debate_runner.py` is implemented. It validates that one
+Debater is configured for each side, derives each turn's existing public context,
+and connects proposal generation to the Turn Orchestrator until the state is
+complete. It is workflow glue: the orchestrator remains the referee, and the
+runner does not perform provider selection, retries, source ingestion, or output
+presentation.
+
+Future assignments may be grounded in a represented person's viewpoint or in
+supplied material such as text, documents, webpages, or video transcripts. That
+material must be normalized before it reaches the Debate Engine and remain
+distinct from research evidence used to support debate claims. The precise
+Reference Material interface and its relationship to Debater Identity have not
+yet been approved.
+
 ## Boundaries
 
 - Orchestration must depend on small interfaces rather than concrete providers.
 - The Debate Record must not know how model or research calls are executed.
 - Basic claim tracking must not grow into the future argument graph prematurely.
 - The initial execution model is synchronous; concurrency requires review.
-- Persistence and CLI boundaries remain undecided.
+- Persistence remains undecided. The initial CLI stays outside this node and only
+  assembles its reviewed public components.
 - Debater identities are stable inputs; evolving transcripts and private judge
   analysis must not be added to them.
 - Prompt construction must remain deterministic and provider-independent;
   generation settings belong to the Text Generator and future recording boundary.
 - Provider adapters own transport-specific settings and errors; they must not add
   provider behavior to the Debate Record or Turn Orchestrator.
+- The CLI may collect source locators but must not own retrieval or normalization;
+  a future Source Ingestion boundary will produce stable, attributable content.
+- Identity-grounding material and claim evidence must remain distinguishable, and
+  imported material must be treated as untrusted prompt data.

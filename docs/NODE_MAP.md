@@ -2,6 +2,7 @@
 
 ```text
 Application
+├── CLI [IMPLEMENTED — INITIAL INTERACTIVE GATE]
 ├── Node 1: Debate Engine [IN PROGRESS]
 │   ├── Debater Identity [IMPLEMENTED]
 │   ├── Debate Record [IMPLEMENTED]
@@ -10,6 +11,7 @@ Application
 │   ├── Debate Prompt Builder [IMPLEMENTED — NO MODEL]
 │   ├── Text Generator Contract [IMPLEMENTED]
 │   ├── Model Debater [IMPLEMENTED]
+│   ├── Debate Runner [IMPLEMENTED]
 │   ├── Research Boundary
 │   ├── Basic Claim Tracking
 │   ├── Judge Boundary

@@ -10,6 +10,9 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = []
 
+[project.scripts]
+model-battlegrounds = "polar_debate.cli:main"
+
 [dependency-groups]
 dev = [
     "mypy>=1.11",
