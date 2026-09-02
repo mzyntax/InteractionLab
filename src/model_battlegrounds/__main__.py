@@ -1,5 +1,5 @@
 """Run the Model Battlegrounds command-line interface."""
 
-from polar_debate.cli import main
+from model_battlegrounds.cli import main
 
 raise SystemExit(main())

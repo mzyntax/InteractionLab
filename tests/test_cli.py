@@ -8,9 +8,9 @@ from urllib.request import Request
 
 import pytest
 
-import polar_debate.model_providers.openai_compatible as adapter_module
-from polar_debate.cli import run_cli
-from polar_debate.debate_engine import DebaterSide
+import model_battlegrounds.model_providers.openai_compatible as adapter_module
+from model_battlegrounds.cli import run_cli
+from model_battlegrounds.debate_engine import DebaterSide
 
 
 class FakeResponse:
@@ -72,7 +72,7 @@ def test_cli_assembles_independent_models_runs_debate_and_prints_transcript(
     result = run_cli(
         input_function=fake_input,
         output_function=outputs.append,
-        environment={"POLAR_DEBATE_A_API_KEY": "secret-a"},
+        environment={"MODEL_BATTLEGROUNDS_A_API_KEY": "secret-a"},
     )
 
     assert result.is_complete

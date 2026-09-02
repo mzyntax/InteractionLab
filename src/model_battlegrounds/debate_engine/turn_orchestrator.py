@@ -18,7 +18,7 @@ component owns normal speaker order and round progression. Prompt construction,
 model calls, and interruption rules belong to later components.
 """
 
-from polar_debate.debate_engine.debate_record import DebaterSide, DebateState
+from model_battlegrounds.debate_engine.debate_record import DebaterSide, DebateState
 
 _NORMAL_ROUND_ORDER = (DebaterSide.A, DebaterSide.B)
 

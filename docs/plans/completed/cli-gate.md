@@ -15,13 +15,13 @@ Application / CLI -> Node 1: Debate Engine and Model Provider Integrations
 - Read optional API keys from environment variables without displaying them.
 - Construct the existing configuration, provider adapters, and Model Debaters.
 - Invoke the existing Debate Runner and print the completed transcript.
-- Add an executable `python -m polar_debate` entry point and focused tests.
+- Add an executable `python -m model_battlegrounds` entry point and focused tests.
 
 ## Decisions
 
 - Use the Python standard library without a CLI framework dependency.
 - Keep provider connections independently configurable for A and B.
-- Use `POLAR_DEBATE_A_API_KEY` and `POLAR_DEBATE_B_API_KEY` only for secrets.
+- Use `MODEL_BATTLEGROUNDS_A_API_KEY` and `MODEL_BATTLEGROUNDS_B_API_KEY` only for secrets.
 - Use visible fixed brief and generation defaults for the first milestone.
 - Print the transcript after completion; live events require a later runner contract.
 - Keep source ingestion, reference material, retries, and provider discovery out of scope.

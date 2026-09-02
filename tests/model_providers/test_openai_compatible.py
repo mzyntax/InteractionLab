@@ -10,9 +10,9 @@ from urllib.request import Request
 
 import pytest
 
-import polar_debate.model_providers.openai_compatible as adapter_module
-from polar_debate.debate_engine import GenerationSettings, TextGenerator
-from polar_debate.model_providers import (
+import model_battlegrounds.model_providers.openai_compatible as adapter_module
+from model_battlegrounds.debate_engine import GenerationSettings, TextGenerator
+from model_battlegrounds.model_providers import (
     OpenAICompatibleError,
     OpenAICompatibleTextGenerator,
 )

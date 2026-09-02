@@ -4,7 +4,7 @@ from dataclasses import FrozenInstanceError
 
 import pytest
 
-from polar_debate.debate_engine import (
+from model_battlegrounds.debate_engine import (
     DebateConfig,
     Debater,
     DebaterBrief,

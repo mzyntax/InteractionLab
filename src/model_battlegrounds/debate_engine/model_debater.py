@@ -21,13 +21,13 @@ returned proposal may enter the Debate Record.
 
 from dataclasses import dataclass
 
-from polar_debate.debate_engine.debate_prompt_builder import build_debate_prompt
-from polar_debate.debate_engine.debater_turn_contract import (
+from model_battlegrounds.debate_engine.debate_prompt_builder import build_debate_prompt
+from model_battlegrounds.debate_engine.debater_turn_contract import (
     DebaterSetup,
     ProposedStatement,
     TurnContext,
 )
-from polar_debate.debate_engine.text_generation_contract import (
+from model_battlegrounds.debate_engine.text_generation_contract import (
     GenerationSettings,
     TextGenerator,
 )

@@ -22,7 +22,7 @@ proposal and tells the Debate Record whether to store it.
 import json
 from dataclasses import dataclass
 
-from polar_debate.debate_engine.debater_turn_contract import DebaterSetup, TurnContext
+from model_battlegrounds.debate_engine.debater_turn_contract import DebaterSetup, TurnContext
 
 _ROLE_INSTRUCTIONS = """You are participating as Debater {side} in a structured debate.
 Represent the assigned position as strongly and faithfully as the evidence allows.

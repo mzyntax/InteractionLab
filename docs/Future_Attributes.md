@@ -4,7 +4,7 @@ This document tracks the maturity of each Python module. Finished modules have
 completed their approved responsibility. Beta modules include likely extensions
 and guidance for integrating them without blurring component boundaries.
 
-## POLAR_DEBATE/\_\_INIT\_\_.PY (BETA)
+## MODEL_BATTLEGROUNDS/\_\_INIT\_\_.PY (BETA)
 
 Marks the application package. Future nodes may add public exports; keep this
 file lightweight and expose only reviewed interfaces.

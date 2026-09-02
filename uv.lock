@@ -280,7 +280,7 @@ wheels = [
 ]
 
 [[package]]
-name = "polar-debate"
+name = "model-battlegrounds"
 version = "0.1.0"
 source = { editable = "." }
 

@@ -20,7 +20,7 @@ import os
 import sys
 from collections.abc import Callable, Mapping
 
-from polar_debate.debate_engine import (
+from model_battlegrounds.debate_engine import (
     DebateConfig,
     DebaterBrief,
     DebaterSetup,
@@ -30,7 +30,7 @@ from polar_debate.debate_engine import (
     ModelDebater,
     run_debate,
 )
-from polar_debate.model_providers import (
+from model_battlegrounds.model_providers import (
     OpenAICompatibleError,
     OpenAICompatibleTextGenerator,
 )
@@ -117,7 +117,7 @@ def run_cli(
         text_generator=OpenAICompatibleTextGenerator(
             base_url=endpoint_a,
             model=model_a,
-            api_key=_optional_api_key(active_environment, "POLAR_DEBATE_A_API_KEY"),
+            api_key=_optional_api_key(active_environment, "MODEL_BATTLEGROUNDS_A_API_KEY"),
         ),
         generation_settings=_GENERATION_SETTINGS,
     )
@@ -126,7 +126,7 @@ def run_cli(
         text_generator=OpenAICompatibleTextGenerator(
             base_url=endpoint_b,
             model=model_b,
-            api_key=_optional_api_key(active_environment, "POLAR_DEBATE_B_API_KEY"),
+            api_key=_optional_api_key(active_environment, "MODEL_BATTLEGROUNDS_B_API_KEY"),
         ),
         generation_settings=_GENERATION_SETTINGS,
     )

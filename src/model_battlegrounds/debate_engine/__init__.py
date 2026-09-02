@@ -7,31 +7,31 @@ Node 1 behavior is added incrementally after each component interface is
 reviewed.
 """
 
-from polar_debate.debate_engine.debate_prompt_builder import (
+from model_battlegrounds.debate_engine.debate_prompt_builder import (
     DebatePrompt,
     build_debate_prompt,
 )
-from polar_debate.debate_engine.debate_record import (
+from model_battlegrounds.debate_engine.debate_record import (
     DebateConfig,
     DebaterSide,
     DebateState,
     DebateStatement,
     DebateStatus,
 )
-from polar_debate.debate_engine.debate_runner import run_debate
-from polar_debate.debate_engine.debater_identity import DebaterBrief
-from polar_debate.debate_engine.debater_turn_contract import (
+from model_battlegrounds.debate_engine.debate_runner import run_debate
+from model_battlegrounds.debate_engine.debater_identity import DebaterBrief
+from model_battlegrounds.debate_engine.debater_turn_contract import (
     Debater,
     DebaterSetup,
     ProposedStatement,
     TurnContext,
 )
-from polar_debate.debate_engine.model_debater import ModelDebater
-from polar_debate.debate_engine.text_generation_contract import (
+from model_battlegrounds.debate_engine.model_debater import ModelDebater
+from model_battlegrounds.debate_engine.text_generation_contract import (
     GenerationSettings,
     TextGenerator,
 )
-from polar_debate.debate_engine.turn_orchestrator import accept_statement, expected_speaker
+from model_battlegrounds.debate_engine.turn_orchestrator import accept_statement, expected_speaker
 
 __all__ = [
     "DebateConfig",

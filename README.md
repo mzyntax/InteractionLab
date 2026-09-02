@@ -20,8 +20,8 @@ Set an API key for either side that needs one. Unset keys are supported for loca
 or otherwise unauthenticated endpoints.
 
 ```bash
-export POLAR_DEBATE_A_API_KEY="..."
-export POLAR_DEBATE_B_API_KEY="..."
+export MODEL_BATTLEGROUNDS_A_API_KEY="..."
+export MODEL_BATTLEGROUNDS_B_API_KEY="..."
 uv run model-battlegrounds
 ```
 

@@ -2,8 +2,8 @@
 
 
 def test_package_imports() -> None:
-    import polar_debate
-    import polar_debate.debate_engine
+    import model_battlegrounds
+    import model_battlegrounds.debate_engine
 
-    assert polar_debate.__name__ == "polar_debate"
-    assert polar_debate.debate_engine.__name__ == "polar_debate.debate_engine"
+    assert model_battlegrounds.__name__ == "model_battlegrounds"
+    assert model_battlegrounds.debate_engine.__name__ == "model_battlegrounds.debate_engine"

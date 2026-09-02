@@ -26,7 +26,7 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlparse
 from urllib.request import Request, urlopen
 
-from polar_debate.debate_engine.text_generation_contract import GenerationSettings
+from model_battlegrounds.debate_engine.text_generation_contract import GenerationSettings
 
 
 class OpenAICompatibleError(RuntimeError):
