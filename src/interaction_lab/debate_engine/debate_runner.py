@@ -19,13 +19,13 @@ The runner only connects those components and does not select providers, retry
 generation, or present the transcript.
 """
 
-from model_battlegrounds.debate_engine.debate_record import DebaterSide, DebateState
-from model_battlegrounds.debate_engine.debater_turn_contract import (
+from interaction_lab.debate_engine.debate_record import DebaterSide, DebateState
+from interaction_lab.debate_engine.debater_turn_contract import (
     Debater,
     DebaterSetup,
     TurnContext,
 )
-from model_battlegrounds.debate_engine.turn_orchestrator import (
+from interaction_lab.debate_engine.turn_orchestrator import (
     accept_statement,
     expected_speaker,
 )

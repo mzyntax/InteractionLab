@@ -8,9 +8,9 @@ from urllib.request import Request
 
 import pytest
 
-import model_battlegrounds.model_providers.openai_compatible as adapter_module
-from model_battlegrounds.cli import run_cli
-from model_battlegrounds.debate_engine import DebaterSide
+import interaction_lab.model_providers.openai_compatible as adapter_module
+from interaction_lab.cli import run_cli
+from interaction_lab.debate_engine import DebaterSide
 
 
 class FakeResponse:
@@ -72,7 +72,7 @@ def test_cli_assembles_independent_models_runs_debate_and_prints_transcript(
     result = run_cli(
         input_function=fake_input,
         output_function=outputs.append,
-        environment={"MODEL_BATTLEGROUNDS_A_API_KEY": "secret-a"},
+        environment={"INTERACTIONLAB_A_API_KEY": "secret-a"},
     )
 
     assert result.is_complete

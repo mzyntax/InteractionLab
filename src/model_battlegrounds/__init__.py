@@ -1,1 +1,0 @@
-"""Model Battlegrounds application package."""

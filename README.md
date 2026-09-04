@@ -1,6 +1,6 @@
-# Model Battlegrounds
+# InteractionLab
 
-Model Battlegrounds is a modular AI experimentation platform centered on structured,
+InteractionLab is a modular AI experimentation platform centered on structured,
 multi-round debates. The backend is being developed as independently testable
 nodes, beginning with the Debate Engine.
 
@@ -20,9 +20,9 @@ Set an API key for either side that needs one. Unset keys are supported for loca
 or otherwise unauthenticated endpoints.
 
 ```bash
-export MODEL_BATTLEGROUNDS_A_API_KEY="..."
-export MODEL_BATTLEGROUNDS_B_API_KEY="..."
-uv run model-battlegrounds
+export INTERACTIONLAB_A_API_KEY="..."
+export INTERACTIONLAB_B_API_KEY="..."
+uv run interactionlab
 ```
 
 The CLI asks for the topic, positions, rounds, and independent endpoint and model

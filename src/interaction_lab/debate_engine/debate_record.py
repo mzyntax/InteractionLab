@@ -21,7 +21,7 @@ module records accepted statements and protects structural invariants.
 from dataclasses import dataclass, replace
 from enum import StrEnum
 
-from model_battlegrounds.debate_engine.debater_identity import DebaterBrief
+from interaction_lab.debate_engine.debater_identity import DebaterBrief
 
 
 def _normalized_text(value: str, field_name: str) -> str:

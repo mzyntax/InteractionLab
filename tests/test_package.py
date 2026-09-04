@@ -2,8 +2,8 @@
 
 
 def test_package_imports() -> None:
-    import model_battlegrounds
-    import model_battlegrounds.debate_engine
+    import interaction_lab
+    import interaction_lab.debate_engine
 
-    assert model_battlegrounds.__name__ == "model_battlegrounds"
-    assert model_battlegrounds.debate_engine.__name__ == "model_battlegrounds.debate_engine"
+    assert interaction_lab.__name__ == "interaction_lab"
+    assert interaction_lab.debate_engine.__name__ == "interaction_lab.debate_engine"

@@ -4,7 +4,7 @@ from dataclasses import FrozenInstanceError
 
 import pytest
 
-from model_battlegrounds.debate_engine import DebaterBrief
+from interaction_lab.debate_engine import DebaterBrief
 
 
 def make_brief(**overrides: object) -> DebaterBrief:

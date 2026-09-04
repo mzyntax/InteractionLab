@@ -22,13 +22,13 @@ assigns its authoritative transcript metadata only after acceptance.
 from dataclasses import dataclass
 from typing import Protocol
 
-from model_battlegrounds.debate_engine.debate_record import (
+from interaction_lab.debate_engine.debate_record import (
     DebateConfig,
     DebaterSide,
     DebateState,
     DebateStatement,
 )
-from model_battlegrounds.debate_engine.debater_identity import DebaterBrief
+from interaction_lab.debate_engine.debater_identity import DebaterBrief
 
 
 def _normalized_text(value: str, field_name: str) -> str:

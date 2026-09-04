@@ -5,7 +5,7 @@ from dataclasses import FrozenInstanceError
 
 import pytest
 
-from model_battlegrounds.debate_engine import GenerationSettings, TextGenerator
+from interaction_lab.debate_engine import GenerationSettings, TextGenerator
 
 
 class FakeTextGenerator:

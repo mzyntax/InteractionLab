@@ -4,7 +4,7 @@ from dataclasses import dataclass, field
 
 import pytest
 
-from model_battlegrounds.debate_engine import (
+from interaction_lab.debate_engine import (
     DebateConfig,
     DebaterBrief,
     DebaterSetup,

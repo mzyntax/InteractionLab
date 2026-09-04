@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "model-battlegrounds"
+name = "interactionlab"
 version = "0.1.0"
 description = "A modular AI debate experimentation platform"
 readme = "README.md"
@@ -11,7 +11,7 @@ requires-python = ">=3.12"
 dependencies = []
 
 [project.scripts]
-model-battlegrounds = "model_battlegrounds.cli:main"
+interactionlab = "interaction_lab.cli:main"
 
 [dependency-groups]
 dev = [
@@ -21,7 +21,7 @@ dev = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/model_battlegrounds"]
+packages = ["src/interaction_lab"]
 
 [tool.pytest.ini_options]
 addopts = ["--strict-config", "--strict-markers"]

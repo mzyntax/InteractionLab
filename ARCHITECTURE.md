@@ -1,6 +1,6 @@
 # Architecture
 
-Model Battlegrounds is organized as modular nodes. Each node owns one understandable
+InteractionLab is organized as modular nodes. Each node owns one understandable
 responsibility, exposes explicit inputs and outputs, and can be tested and
 replaced independently where practical.
 
@@ -39,15 +39,15 @@ those proposal turns with the Turn Orchestrator until it returns a completed
 Debate State. Reusable provider profiles and interruption behavior do not yet exist.
 
 The first concrete provider integration lives outside the Debate Engine in
-`model_battlegrounds.model_providers`. Its OpenAI-compatible adapter holds endpoint and
+`interaction_lab.model_providers`. Its OpenAI-compatible adapter holds endpoint and
 model configuration, translates generation settings into a Chat Completions HTTP
 request, and returns raw assistant text through the shared contract. The CLI
 currently performs explicit provider selection by collecting an endpoint and
 model for each side; reusable provider profiles do not yet exist.
 
-The Python source uses a `src` layout. The `model_battlegrounds.debate_engine` package
+The Python source uses a `src` layout. The `interaction_lab.debate_engine` package
 is the architectural home of Node 1. Provider-specific integrations live in
-`model_battlegrounds.model_providers`. The initial `model_battlegrounds.cli` boundary collects
+`interaction_lab.model_providers`. The initial `interaction_lab.cli` boundary collects
 terminal input, assembles those components, and presents the completed transcript.
 
 See `docs/NODE_MAP.md` for node status and

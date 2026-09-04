@@ -23,7 +23,7 @@ embedding model-provider, research-provider, or frontend behavior.
 
 ## Initial package plan
 
-The architectural package is `model_battlegrounds.debate_engine`. Modules will be
+The architectural package is `interaction_lab.debate_engine`. Modules will be
 added one milestone at a time rather than scaffolded before their interfaces
 are understood.
 
@@ -91,7 +91,7 @@ the generator, and returns a `ProposedStatement`. It does not create provider
 connections, enforce turn order, record content, retry failures, or judge output.
 
 The first concrete `TextGenerator` implementation lives outside this node in
-`model_battlegrounds.model_providers.openai_compatible`. It translates the shared call
+`interaction_lab.model_providers.openai_compatible`. It translates the shared call
 into an OpenAI-compatible Chat Completions HTTP request. The Debate Engine imports
 neither that adapter nor its provider-specific error type.
 
